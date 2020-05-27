@@ -85,6 +85,8 @@ class Gitlab3Issue(Issue):
             created = self.record['created_at']
             updated = self.record['updated_at']
             state = self.record['state']
+            if state == "merged":
+                state = "closed"
             upvotes = self.record['upvotes']
             downvotes = self.record['downvotes']
         else:
@@ -275,6 +277,8 @@ class Gitlab3Service(IssueService):
         tmpl = 'https://{host}/api/v3/projects/%d/merge_requests' % rid
         issues = {}
         for issue in self._fetch_paged(tmpl):
+            if issue['state'] == "merged":
+                continue
             issues[issue['id']] = (rid, issue)
         return issues
 
