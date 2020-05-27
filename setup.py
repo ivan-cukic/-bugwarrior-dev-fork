@@ -72,6 +72,7 @@ setup(name='bugwarrior',
       [bugwarrior.service]
       github=bugwarrior.services.github:GithubService
       gitlab=bugwarrior.services.gitlab:GitlabService
+      gitlab3=bugwarrior.services.gitlab3:Gitlab3Service
       bitbucket=bugwarrior.services.bitbucket:BitbucketService
       trac=bugwarrior.services.trac:TracService
       bts=bugwarrior.services.bts:BTSService
